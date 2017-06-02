@@ -52,3 +52,7 @@ Mkfile.old
 dkms.conf
 
 network_ex2/Debug
+.vs/
+ipch/
+*.sdf
+*.suo
