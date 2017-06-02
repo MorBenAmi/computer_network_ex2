@@ -22,7 +22,7 @@
     <ProjectGuid>{147CA145-752E-4C77-83A2-35CDC8310FE1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>network_ex2</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -146,15 +146,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Flow.c" />
     <ClCompile Include="InputHandler.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="OutputFileHandler.c" />
-    <ClCompile Include="PacketUtils.c" />
+    <ClCompile Include="Packet.c" />
+    <ClCompile Include="PacketQueue.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Address.h" />
+    <ClInclude Include="Flow.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="OutputFileHandler.h" />
-    <ClInclude Include="PacketUtils.h" />
+    <ClInclude Include="Packet.h" />
+    <ClInclude Include="PacketQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

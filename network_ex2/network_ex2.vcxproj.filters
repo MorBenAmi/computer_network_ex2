@@ -24,7 +24,13 @@
     <ClCompile Include="OutputFileHandler.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PacketUtils.c">
+    <ClCompile Include="Packet.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketQueue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +41,16 @@
     <ClInclude Include="OutputFileHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PacketUtils.h">
+    <ClInclude Include="PacketQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Address.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
