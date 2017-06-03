@@ -27,12 +27,12 @@ void closeFile()
 	output_file = NULL;
 }
 
-void writeToFile(const char* message)
+void writePacketTime(int packet_id, int time)
 {
 	if (output_file == NULL)
 		return;
 
-  fprintf(output_file, message);
+  fprintf(output_file, "%d: %d\n", time, packet_id);
 }
 
 

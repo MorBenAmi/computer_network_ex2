@@ -5,6 +5,6 @@ void openFile(char* output_path);
 
 void closeFile();
 
-void writeToFile(const char* message);
+void writePacketTime(int packet_id, int time);
 
 #endif

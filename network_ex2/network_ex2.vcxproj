@@ -146,7 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Adress.c" />
+    <ClCompile Include="Address.c" />
     <ClCompile Include="Flow.c" />
     <ClCompile Include="FlowList.c" />
     <ClCompile Include="InputHandler.c" />
@@ -154,6 +154,7 @@
     <ClCompile Include="OutputFileHandler.c" />
     <ClCompile Include="Packet.c" />
     <ClCompile Include="PacketQueue.c" />
+    <ClCompile Include="Scheduler.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="OutputFileHandler.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="PacketQueue.h" />
+    <ClInclude Include="Scheduler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

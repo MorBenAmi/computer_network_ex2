@@ -36,7 +36,10 @@
     <ClCompile Include="FlowList.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Adress.c">
+    <ClCompile Include="Scheduler.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Address.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FlowList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scheduler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

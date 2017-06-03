@@ -17,5 +17,6 @@ typedef struct flow
 bool areFlowEquals(flow* src_flow, flow* other_flow);
 void addToFlow(flow* flow, packet* packet);
 flow* createFlowByPacket(packet* packet);
+void freeFlow(flow* flow);
 
 #endif

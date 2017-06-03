@@ -25,3 +25,16 @@ flowList* createFlowList()
 	list->last = NULL;
 	return list;
 }
+void freeList(flowList *list)
+{
+	flowNode *node = list->first;
+	flowNode *next_node = NULL;
+	while (node != NULL)
+	{
+		next_node = node->next;
+		freeFlow(node->value);
+		free(node);
+		node = next_node;
+	}
+	free(list);
+}

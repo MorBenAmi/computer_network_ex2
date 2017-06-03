@@ -16,7 +16,7 @@ packet *factoryPacket(char *line, int default_weight)
 
 	value = strtok(line, " ");
 	pkt = (packet *)malloc(sizeof(packet));
-	pkt->pktID = atol(value);
+	pkt->packet_id = atol(value);
 	value = strtok(NULL, " ");
 	pkt->time = atol(value);
 	factoryAddress(&(pkt->src_address));

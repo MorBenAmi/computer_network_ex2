@@ -5,7 +5,7 @@
 
 typedef struct packet
 {
-	long int pktID;
+	long int packet_id;
 	long int time;
 	unsigned int length;
 	address src_address;

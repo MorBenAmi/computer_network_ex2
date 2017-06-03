@@ -23,3 +23,9 @@ flow* createFlowByPacket(packet* packet)
 	enqueue(new_flow->queue, packet);
 	return new_flow;
 }
+
+void freeFlow(flow* flow)
+{
+	freeQueue(flow->queue);
+	free(flow);
+}

@@ -16,5 +16,6 @@ typedef struct flowList
 } flowList;
 
 void addFlow(flowList* list, flow* flow);
+void freeList(flowList *list);
 
 #endif

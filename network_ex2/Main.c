@@ -27,6 +27,5 @@ int main(int argc, char* argv[])
 
   closeFile();
 
-  getchar();
   exit(0);
 }
