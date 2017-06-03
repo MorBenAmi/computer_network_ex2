@@ -58,3 +58,4 @@ ipch/
 *.suo
 network_ex2/x64/
 x64/
+network_ex2/network_ex2.vcxproj.user
