@@ -1,12 +1,5 @@
 #include "Flow.h"
 
-bool areFlowEquals(flow* src_flow, flow* other_flow)
-{
-
-
-	return true;
-}
-
 void addToFlow(flow* flow, packet* packet)
 {
 	enqueue(flow->queue, packet);

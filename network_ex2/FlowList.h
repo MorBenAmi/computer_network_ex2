@@ -17,5 +17,6 @@ typedef struct flowList
 
 void addFlow(flowList* list, flow* flow);
 void freeList(flowList *list);
+flowList* createFlowList();
 
 #endif
