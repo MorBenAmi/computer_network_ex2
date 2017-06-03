@@ -33,6 +33,12 @@
     <ClCompile Include="Flow.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FlowList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Adress.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputHandler.h">
@@ -51,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Address.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlowList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

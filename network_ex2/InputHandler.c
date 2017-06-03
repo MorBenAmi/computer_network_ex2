@@ -4,52 +4,123 @@
 #include <string.h>
 #include "InputHandler.h"
 #include "OutputFileHandler.h"
-#include "PacketQueue.h"
+
+packet* readPacket(FILE* file, int default_weight)
+{
+	char line[256];
+
+	memset(line, '\0', sizeof(line));
+	fgets(line, sizeof(line), file);
+	if (line == NULL || *line == '\0')
+	{
+		return NULL;
+	}
+	return factoryPacket(line, default_weight);
+}
+
+bool allFlowsEmpty(flowList* list)
+{
+	flowNode* pos = list->first;
+	while (pos != NULL)
+	{
+		if (!isEmpty(pos->value->queue))
+			return false;
+		pos = pos->next;
+	}
+	return true;
+}
+
+flowNode* handleRR(flowList* flow_list, flowNode* current_flow_node, long* current_time)
+{
+	packet* current_packet = NULL;
+
+	if (current_flow_node == NULL)
+		current_flow_node = flow_list->first;
+
+	while (current_flow_node != NULL &&
+		(isEmpty(current_flow_node->value->queue) || current_flow_node->value->credit == 0))
+	{
+		current_flow_node->value->credit = current_flow_node->value->weight;
+		current_flow_node = current_flow_node->next;
+	}
+
+	if (current_flow_node != NULL)
+	{
+		if (current_flow_node->value->credit == -1) //first time handling this flow
+			current_flow_node->value->credit = current_flow_node->value->weight;
+
+		current_packet = dequeue(current_flow_node->value->queue);
+		printf("%d:%d\n", *current_time, current_packet->pktID);//todo: change to output file
+		current_flow_node->value->credit--;
+		(*current_time) += current_packet->length;
+	}
+	else if (allFlowsEmpty(flow_list))
+	{
+		(*current_time)++;
+	}
+
+	return current_flow_node;
+}
 
 void handleInput(char *input_file, char *scheduler_type, int default_weight, int quantum)
 {
 	FILE *file = NULL;
 	long int current_time = 0;
-	char line[256];
 	packet *current_packet = NULL;
+	flowList *flow_list = NULL;
+	flow* current_flow = NULL;
 
-	packetQueue *queue = createQueue();
 	file = fopen(input_file, "r");
 	if (file == NULL)
 	{
 		printf("Unable to open input file\n");
 		exit(1);
 	}
-	//TODO Limor -> set RR or DRR, quantum 
 
-	while (1) {
-		if (current_packet == NULL)
+	flow_list = createFlowList();
+	current_packet = readPacket(file, default_weight);
+	while (current_packet != NULL || !allFlowsEmpty(flow_list))
+	{
+		while (current_packet != NULL && current_packet->time <= current_time)
 		{
-			fgets(line, sizeof(line), file);
-			if (line == NULL || *line == '\0')
-			{
-				//TODO Limor -> update DRR/RR that no more pkts
-				break;
-			}
-			current_packet = factoryPacket(line, default_weight);
-			memset(line, '\0', sizeof(line));
+			addPacketToRelevantFlow(flow_list, current_packet);
+			current_packet = readPacket(file, default_weight);
 		}
-
-		if (current_packet->Time <= current_time)
+		if (strcmp(scheduler_type, "RR") == 0)
 		{
-			//TODO Limor -> update DRR or RR for current_packet + time 
-			//TODO Limor -> free!
-			enqueue(queue, current_packet);
-			current_packet = NULL;
+			current_flow = handleRR(flow_list, current_flow, &current_time);
 		}
 		else
 		{
-			//TODO Limor -> update time 
-			current_time++;
+
 		}
 	}
 
-	freeQueue(queue);
+	//todo: free all flows...
 
-	fclose(input_file);
+	fclose(file);
+}
+
+void addPacketToRelevantFlow(flowList *list, packet *packet)
+{
+	flowNode *pos = list->first;
+	flow *exist_flow = NULL;
+	while (pos != NULL)
+	{
+		if (areAddressesEquals(pos->value->src_addr, packet->src_address) &&
+			areAddressesEquals(pos->value->dst_addr, packet->dest_address))
+		{
+			exist_flow = pos->value;
+			break;
+		}
+		pos = pos->next;
+	}
+	if (exist_flow != NULL)
+	{
+		addToFlow(exist_flow, packet);
+	}
+	else
+	{
+		addFlow(list, createFlowByPacket(packet));
+	}
 }

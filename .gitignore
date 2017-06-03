@@ -57,3 +57,4 @@ ipch/
 *.sdf
 *.suo
 network_ex2/x64/
+x64/

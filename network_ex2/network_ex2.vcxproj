@@ -146,7 +146,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Adress.c" />
     <ClCompile Include="Flow.c" />
+    <ClCompile Include="FlowList.c" />
     <ClCompile Include="InputHandler.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="OutputFileHandler.c" />
@@ -156,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Address.h" />
     <ClInclude Include="Flow.h" />
+    <ClInclude Include="FlowList.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="OutputFileHandler.h" />
     <ClInclude Include="Packet.h" />

@@ -29,11 +29,12 @@ packet *dequeue(packetQueue *queue)
 	if (node == NULL)
 		return NULL;
 
-	node->value;
-	free(node);
+	value = node->value;
 	queue->head = queue->head->next;
 	if (queue->head == NULL)
 		queue->tail = NULL;
+
+	free(node);
 	return value;
 }
 
@@ -43,15 +44,11 @@ void enqueue(packetQueue *queue, packet *pkt)
 	node->value = pkt;
 	node->next = NULL;
 	if (queue->head == NULL)
-	{
 		queue->head = node;
-		queue->tail = node;
-	}
 	else
-	{
 		queue->tail->next = node;
-		queue->tail = node;
-	}
+
+	queue->tail = node;
 }
 
 packet *front(packetQueue *queue)

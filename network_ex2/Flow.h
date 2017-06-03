@@ -6,13 +6,16 @@
 
 typedef struct flow
 {
-	address* src_addr;
-	address* dst_addr;
+	address src_addr;
+	address dst_addr;
+	int weight;
+	int credit;
 
 	packetQueue* queue;
 } flow;
 
 bool areFlowEquals(flow* src_flow, flow* other_flow);
-void addToFlow(flow* src_flow, packet* packet);
+void addToFlow(flow* flow, packet* packet);
+flow* createFlowByPacket(packet* packet);
 
 #endif
