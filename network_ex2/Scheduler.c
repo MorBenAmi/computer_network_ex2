@@ -67,11 +67,16 @@ flowNode* handleDRR(flowList* flow_list, flowNode* current_flow_node, long* curr
 		else
 		{
 			if (!(*is_continues_sending))
+			{
 				current_flow_node->value->credit += (current_flow_node->value->weight*quantom);
+				*is_continues_sending = true;
+			}
 			else
+			{
 				current_flow_node = current_flow_node->next;
+				*is_continues_sending = false;
+			}
 
-			*is_continues_sending = false;
 			return current_flow_node;
 		}
 	}
