@@ -51,8 +51,9 @@ flowNode* handleDRR(flowList* flow_list, flowNode* current_flow_node, long* curr
 
 		if (isEmpty(current_flow_node->value->queue))
 		{
+			if (!(*is_continues_sending)) 
+				current_flow_node->value->credit = 0;
 			*is_continues_sending = false;
-			current_flow_node->value->credit = 0;
 			current_flow_node = current_flow_node->next;
 		}
 		else if (current_flow_node->value->credit >= front(current_flow_node->value->queue)->length)
