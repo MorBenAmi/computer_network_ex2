@@ -25,6 +25,19 @@ flowList* createFlowList()
 	list->last = NULL;
 	return list;
 }
+
+BOOL allFlowsEmpty(flowList* list)
+{
+	flowNode* pos = list->first;
+	while (pos != NULL)
+	{
+		if (isEmpty(pos->value->queue) == FALSE)
+			return FALSE;
+		pos = pos->next;
+	}
+	return TRUE;
+}
+
 void freeList(flowList *list)
 {
 	flowNode *node = list->first;

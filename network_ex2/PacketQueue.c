@@ -58,7 +58,9 @@ packet *front(packetQueue *queue)
 	return queue->head->value;
 }
 
-bool isEmpty(packetQueue *queue)
+BOOL isEmpty(packetQueue *queue)
 {
-	return queue->head == NULL;
+	if (queue->head == NULL)
+		return TRUE;
+	return FALSE;
 }

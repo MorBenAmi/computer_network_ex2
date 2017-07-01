@@ -1,9 +1,9 @@
 #ifndef ADDRESS_HEADER
 #define ADDRESS_HEADER
 
-#include <stdbool.h>
-
 #define MAX_IP_SIZE 45 //Support IPv6
+
+#include <windows.h>
 
 typedef struct address
 {
@@ -11,6 +11,6 @@ typedef struct address
 	unsigned int port;
 } address;
 
-bool areAddressesEquals(address a1, address a2);
+BOOL areAddressesEquals(address a1, address a2);
 
 #endif

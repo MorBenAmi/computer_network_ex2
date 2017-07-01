@@ -2,7 +2,7 @@
 #define PACKET_QUEUE_HEADER
 
 #include "Packet.h"
-#include <stdbool.h>
+#include <windows.h>
 
 typedef struct packetNode {
 	packet* value;
@@ -20,7 +20,7 @@ packetQueue *createQueue();
 void enqueue(packetQueue* queue, packet* packet);
 packet *dequeue(packetQueue *queue);
 packet *front(packetQueue *queue);
-bool isEmpty(packetQueue *queue);
+BOOL isEmpty(packetQueue *queue);
 
 void freeQueue(packetQueue *queue);
 

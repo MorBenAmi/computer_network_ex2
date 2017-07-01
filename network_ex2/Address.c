@@ -1,6 +1,8 @@
 #include "Address.h"
 
-bool areAddressesEquals(address a1, address a2)
+BOOL areAddressesEquals(address a1, address a2)
 {
-	return strcmp(a1.address, a2.address) == 0 && a1.port == a2.port;
+	if (strcmp(a1.address, a2.address) == 0 && a1.port == a2.port)
+		return TRUE;
+	return FALSE;
 }
